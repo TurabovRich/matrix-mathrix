@@ -71,7 +71,7 @@ const routes = [{
 
 const router = createRouter({
   history: createWebHistory(),
-  base: location.pathname,
+  base: window.location.pathname,
   routes
 })
 
