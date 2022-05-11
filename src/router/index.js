@@ -1,4 +1,9 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import {
+  createRouter,
+  createWebHistory
+} from 'vue-router'
+
+
 
 import Home from '@/pages/Home.vue'
 import ourTeachers from '@/pages/OurTeachers'
@@ -14,8 +19,7 @@ import Excercises from '@/pages/TheExcercises'
 import Finish from '@/components/ExamAnswers'
 
 
-const routes = [
-  {
+const routes = [{
     path: '',
     component: Home
   },
@@ -30,7 +34,7 @@ const routes = [
   {
     path: '/dashboard',
     component: Dashboard
-  },  
+  },
   {
     path: '/subjects',
     component: Lessons
@@ -56,7 +60,7 @@ const routes = [
     component: ExamPage
   },
   {
-    path: '/finish', 
+    path: '/finish',
     component: Finish
   },
   {
@@ -67,7 +71,9 @@ const routes = [
 
 const router = createRouter({
   history: createWebHistory(),
+  base: location.pathname,
   routes
 })
+
 
 export default router

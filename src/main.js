@@ -7,7 +7,6 @@ import router from './router'
 import 'vue-router-tab/dist/lib/vue-router-tab.css'
 
 const app = createApp(App)
-
 app.AOS = new AOS.init({ disable: "phone", once: true });
 app.use(AOS)
 app.use(store)
