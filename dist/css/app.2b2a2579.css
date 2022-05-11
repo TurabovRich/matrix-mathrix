@@ -143,7 +143,7 @@ input {
 }
 
 .bg {
-    background: url(../img/bg3.44d118bc.png);
+    background: url(./img/bg3.44d118bc.png);
     z-index: -1;
     padding: 20px 0
 }
@@ -466,7 +466,7 @@ input {
 }
 
 .work[data-v-7cadeb10] {
-    background: url(../img/bg.62a4524f.png);
+    background: url(./img/bg.62a4524f.png);
     background-size: 100% 100%;
     background-repeat: no-repeat
 }
@@ -613,7 +613,7 @@ input {
     margin-top: 70px;
     margin-bottom: 39px;
     padding-bottom: 100px;
-    background: url(../img/pattterns2.8565d2be.png);
+    background: url(./img/pattterns2.8565d2be.png);
     background-position-y: 50px;
     background-position-x: 40px;
     background-repeat: no-repeat
@@ -965,7 +965,7 @@ a:hover {
 }
 
 .teachers[data-v-03f61490] {
-    background: url(../img/bg2.7d505c9e.png);
+    background: url(./img/bg2.7d505c9e.png);
     background-repeat: no-repeat;
     background-size: 100% 100%;
     margin-top: 80px;
@@ -2066,7 +2066,7 @@ h1[data-v-150e32a4] {
 }
 
 .start[data-v-150e32a4] {
-    background: url(../img/bg3.44d118bc.png) no-repeat;
+    background: url(./img/bg3.44d118bc.png) no-repeat;
     background-size: 100% 100%;
     width: 100%;
     height: 100vh;
@@ -2259,7 +2259,7 @@ h1[data-v-c89f6368] {
 }
 
 .start[data-v-c89f6368] {
-    background: url(../img/bg3.44d118bc.png) no-repeat;
+    background: url(./img/bg3.44d118bc.png) no-repeat;
     background-size: 100% 100%;
     width: 100%;
     height: 100vh;
