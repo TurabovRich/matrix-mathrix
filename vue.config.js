@@ -3,4 +3,4 @@ module.exports = defineConfig({
   transpileDependencies: true,
 })
 
-module.exports = { publicPath: "", };
+module.exports = { publicPath: "/assets/"};
