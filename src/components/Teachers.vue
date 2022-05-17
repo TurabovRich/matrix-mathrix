@@ -186,13 +186,14 @@ export default {
 
 .teach-img {
   border-top-left-radius: 6px;
+  margin-bottom: 28px;
   border-top-right-radius: 6px;
 }
 
 .lesson-img {
   position: absolute;
-  margin-left: -190px;
-  margin-top: 195px;
+  margin-left: 75px;
+  margin-top: -75px;
 }
 
 .name {

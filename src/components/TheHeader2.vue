@@ -85,32 +85,30 @@
               </svg>
               Account settings
             </button>
-            <router-link to="/">
-              <button class="flex">
-                <svg
+            <button class="flex" @click="Logout">
+              <svg
+                width="30"
+                height="31"
+                viewBox="0 0 30 31"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <rect
+                  y="0.247437"
                   width="30"
-                  height="31"
-                  viewBox="0 0 30 31"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <rect
-                    y="0.247437"
-                    width="30"
-                    height="30"
-                    rx="15"
-                    fill="#DEF9F1"
-                  />
-                  <path
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
-                    d="M9.82724 8.2478H20.1728C21.1778 8.2478 22 9.07024 22 10.0753V10.8269H14.375C12.8952 10.8269 11.6842 12.0378 11.6842 13.5176V16.9782C11.6842 18.458 12.895 19.669 14.375 19.669H22V20.4206C22 21.4256 21.1778 22.248 20.1728 22.248H9.82724C8.82223 22.248 8 21.4256 8 20.4206V10.0753C8 9.07024 8.82223 8.2478 9.82724 8.2478ZM13.7906 14.444C12.7335 14.444 12.7335 16.0518 13.7906 16.0518H18.4834L17.5728 16.9624C16.825 17.7102 17.9618 18.8469 18.7096 18.0991L20.9882 15.8209C21.2952 15.5138 21.3209 15.0078 20.9882 14.6749L18.7096 12.3963C17.9618 11.6489 16.825 12.7857 17.5728 13.533L18.4834 14.444H13.7906Z"
-                    fill="#229A87"
-                  />
-                </svg>
-                Log Out
-              </button>
-            </router-link>
+                  height="30"
+                  rx="15"
+                  fill="#DEF9F1"
+                />
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M9.82724 8.2478H20.1728C21.1778 8.2478 22 9.07024 22 10.0753V10.8269H14.375C12.8952 10.8269 11.6842 12.0378 11.6842 13.5176V16.9782C11.6842 18.458 12.895 19.669 14.375 19.669H22V20.4206C22 21.4256 21.1778 22.248 20.1728 22.248H9.82724C8.82223 22.248 8 21.4256 8 20.4206V10.0753C8 9.07024 8.82223 8.2478 9.82724 8.2478ZM13.7906 14.444C12.7335 14.444 12.7335 16.0518 13.7906 16.0518H18.4834L17.5728 16.9624C16.825 17.7102 17.9618 18.8469 18.7096 18.0991L20.9882 15.8209C21.2952 15.5138 21.3209 15.0078 20.9882 14.6749L18.7096 12.3963C17.9618 11.6489 16.825 12.7857 17.5728 13.533L18.4834 14.444H13.7906Z"
+                  fill="#229A87"
+                />
+              </svg>
+              Log Out
+            </button>
           </div>
           <button
             @click="notifications = { true: !true }"
@@ -165,8 +163,9 @@
   </div>
 </template>
 <script>
+import { ref, onBeforeMount } from "vue";
+import firebase from "firebase";
 export default {
-  name: "header",
   data() {
     return {
       lessons: ["Terminal ES", "soon", "soon"],
@@ -184,11 +183,27 @@ export default {
       this.userBtn = true;
     },
     if(userBtn = true) {
-      document.body.style.overflow = 'hidden'
+      document.body.style.overflow = "hidden";
+    },
+  },
+  setup() {
+    const name = ref("")
+    onBeforeMount(() => {
+      const user = firebase.auth().currentUser;
+      if (user) {
+        name.value = user.email.split("@")[0];
+      }
+    });
+
+    const Logout = () => {
+      firebase
+      .auth()
+      .signOut()
+      .then(() => console.log("Signed out"))
+      .catch(err => console.log(err.message))
     }
-    // else {
-    //   document.body.style.overflow = 'inherit'
-    // }
+
+    return {name, Logout}
   },
 };
 </script>

@@ -3,9 +3,14 @@
   <div class="navigation">
     <div class="container">
       <div class="nav-bar flex items-center">
-        <a class="nav-a" href="/">Home Page</a>
+        <router-link to="/" class="nav-a">
+          Home Page
+        </router-link>
         <span>>></span>
         <a class="nav-a nav-a__active" href="">Teachers</a>
+        <router-link to="/OurTeachers" class="nav-a nav-a__active">
+          Teachers
+        </router-link>
       </div>
     </div>
   </div>

@@ -1,13 +1,13 @@
-[debug] [2022-04-25T10:22:41.568Z] ----------------------------------------------------------------------
-[debug] [2022-04-25T10:22:41.569Z] Command:       D:\node.exe C:\Users\msii\OneDrive\Рабочий стол\some\node_modules\firebase-tools\lib\bin\firebase.js init bobur
-[debug] [2022-04-25T10:22:41.570Z] CLI Version:   9.1.0
-[debug] [2022-04-25T10:22:41.570Z] Platform:      win32
-[debug] [2022-04-25T10:22:41.570Z] Node Version:  v16.13.2
-[debug] [2022-04-25T10:22:41.571Z] Time:          Mon Apr 25 2022 15:22:41 GMT+0500 (Узбекистан, стандартное время)
-[debug] [2022-04-25T10:22:41.571Z] ----------------------------------------------------------------------
-[debug] [2022-04-25T10:22:41.571Z] 
-[debug] [2022-04-25T10:22:41.576Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2022-04-25T10:22:41.577Z] > authorizing via signed-in user
+[debug] [2022-05-17T07:23:27.777Z] ----------------------------------------------------------------------
+[debug] [2022-05-17T07:23:27.778Z] Command:       D:\node.exe C:\Users\msii\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init hosting
+[debug] [2022-05-17T07:23:27.779Z] CLI Version:   10.9.2
+[debug] [2022-05-17T07:23:27.779Z] Platform:      win32
+[debug] [2022-05-17T07:23:27.779Z] Node Version:  v16.13.2
+[debug] [2022-05-17T07:23:27.779Z] Time:          Tue May 17 2022 12:23:27 GMT+0500 (Узбекистан, стандартное время)
+[debug] [2022-05-17T07:23:27.780Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-05-17T07:23:27.823Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-05-17T07:23:27.823Z] > authorizing via signed-in user (turabovbobur12@gmail.com)
 [info] 
      ######## #### ########  ######## ########     ###     ######  ########
      ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
@@ -17,11 +17,11 @@
 
 You're about to initialize a Firebase project in this directory:
 
-  C:\Users\msii\OneDrive\Рабочий стол\some
+  C:\Users\msii\OneDrive\Рабочий стол\matrix-mathrix
 
 Before we get started, keep in mind:
 
-  * You are initializing in an existing Firebase project directory
+  * You are initializing within an existing Firebase project directory
 
 [info] 
 === Project Setup
@@ -30,30 +30,18 @@ Before we get started, keep in mind:
 [info] You can create multiple project aliases by running firebase use --add, 
 [info] but for now we'll just set up a default project.
 [info] 
-[info] i  .firebaserc already has a default project, using vue-3-crud. 
-[debug] [2022-04-25T10:22:44.911Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
-[debug] [2022-04-25T10:22:44.911Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+[debug] [2022-05-17T07:23:30.868Z] Using project from CLI flag: vue-3-crud
+[debug] [2022-05-17T07:23:30.868Z] > refreshing access token with scopes: []
+[debug] [2022-05-17T07:23:30.869Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
  <request body omitted>
-[debug] [2022-04-25T10:22:45.348Z] <<< HTTP RESPONSE 200 {"cache-control":"no-cache, no-store, max-age=0, must-revalidate","date":"Mon, 25 Apr 2022 10:22:48 GMT","pragma":"no-cache","expires":"Mon, 01 Jan 1990 00:00:00 GMT","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
-[debug] [2022-04-25T10:22:45.365Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/vue-3-crud  
- 
-[debug] [2022-04-25T10:22:45.974Z] <<< HTTP RESPONSE 403 {"vary":"X-Origin, Referer, Origin,Accept-Encoding","content-type":"application/json; charset=UTF-8","date":"Mon, 25 Apr 2022 10:22:48 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
-[debug] [2022-04-25T10:22:45.974Z] <<< HTTP RESPONSE BODY {"error":{"code":403,"message":"The caller does not have permission","status":"PERMISSION_DENIED"}}
-[debug] [2022-04-25T10:22:45.975Z] HTTP Error: 403, The caller does not have permission
-[debug] [2022-04-25T10:22:47.232Z] FirebaseError: HTTP Error: 403, The caller does not have permission
-    at module.exports (C:\Users\msii\OneDrive\Рабочий стол\some\node_modules\firebase-tools\lib\responseToError.js:38:12)
-    at Request._callback (C:\Users\msii\OneDrive\Рабочий стол\some\node_modules\firebase-tools\lib\api.js:41:35)
-    at Request.self.callback (C:\Users\msii\OneDrive\Рабочий стол\some\node_modules\request\request.js:185:22)
-    at Request.emit (node:events:390:28)
-    at Request.emit (node:domain:475:12)
-    at Request.<anonymous> (C:\Users\msii\OneDrive\Рабочий стол\some\node_modules\request\request.js:1154:10)
-    at Request.emit (node:events:390:28)
-    at Request.emit (node:domain:475:12)
-    at IncomingMessage.<anonymous> (C:\Users\msii\OneDrive\Рабочий стол\some\node_modules\request\request.js:1076:12)
-    at Object.onceWrapper (node:events:509:28)
-    at IncomingMessage.emit (node:events:402:35)
-    at IncomingMessage.emit (node:domain:475:12)
-    at endReadableNT (node:internal/streams/readable:1343:12)
-    at processTicksAndRejections (node:internal/process/task_queues:83:21)
+[debug] [2022-05-17T07:23:31.658Z] <<< HTTP RESPONSE 200 {"expires":"Mon, 01 Jan 1990 00:00:00 GMT","pragma":"no-cache","cache-control":"no-cache, no-store, max-age=0, must-revalidate","date":"Tue, 17 May 2022 07:23:32 GMT","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2022-05-17T07:23:31.682Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/vue-3-crud [none]
+[debug] [2022-05-17T07:23:34.133Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/vue-3-crud 403
+[debug] [2022-05-17T07:23:34.133Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/vue-3-crud {"error":{"code":403,"message":"The caller does not have permission","status":"PERMISSION_DENIED"}}
+[debug] [2022-05-17T07:23:34.133Z] HTTP Error: 403, The caller does not have permission
+[debug] [2022-05-17T07:23:34.961Z] FirebaseError: HTTP Error: 403, The caller does not have permission
+    at module.exports (C:\Users\msii\AppData\Roaming\npm\node_modules\firebase-tools\lib\responseToError.js:47:12)
+    at RetryOperation._fn (C:\Users\msii\AppData\Roaming\npm\node_modules\firebase-tools\lib\apiv2.js:286:39)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
 [error] 
 [error] Error: Failed to get Firebase project vue-3-crud. Please make sure the project exists and your account has permission to access it.

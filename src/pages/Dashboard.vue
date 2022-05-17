@@ -86,14 +86,14 @@ export default {
       ],
     };
   },
-  computed: {
-    tabContent() {
-      return this.tabs[this.activeTab];
-    },
-  },
   methods: {
     setTabActive(tab) {
       this.activeTab = tab;
+    },
+  },
+  computed: {
+    tabContent() {
+      return this.tabs[this.activeTab];
     },
   },
 };

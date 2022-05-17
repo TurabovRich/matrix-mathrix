@@ -1,101 +1,174 @@
 <template>
-  <div class="container flex justify-center">
-    <div
-      class="modal body mt-5 absolute modal-active"
-      :class="{ 'body': modalOpen == true }"
-      v-if="modalOpen"
-      @click="OverflowHidden()"
-    >
-      <div class="bg">
-        <button class="close-btn absolute" @click="modalOpen = false">x</button>
-        <div class="modal__contact">
-          <div class="modal__title flex">
-            <img class="modal__img" src="@/assets/logo3.png" alt="" />
-            <h1 class="modal__h1">Log in</h1>
-            <span class="modal__p">
-              Don't have an account?
-              <a class="modal__a font-semibold" href="registr">Registration</a>
-            </span>
-          </div>
-          <form @submit.prevent="onSubmit" class="form form-inline">
-            <div class="input-group">
-              <p class="input-txt font-semibold">Email</p>
-              <input
-                v-model="form.email"
-                class="mail-input pt-2 form__control"
-                type="email"
-                name="email"
+  <div class="container flex justify-center bg-white">
+    <transition name="fade">
+      <div
+        class="modal mt-5 fixed opacity-100"
+        v-if="modalOpen"
+        :class="{ 'blur-content': (modalOpen = true) }"
+      >
+        <div class="modal-bg">
+          <button
+            class="close-btn flex justify-center rounded-full absolute"
+            @click="modalOpen = false"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="#229A87"
+              viewBox="0 0 30 30"
+              width="10px"
+              height="10px"
+            >
+              <path
+                d="M 7 4 C 6.744125 4 6.4879687 4.0974687 6.2929688 4.2929688 L 4.2929688 6.2929688 C 3.9019687 6.6839688 3.9019687 7.3170313 4.2929688 7.7070312 L 11.585938 15 L 4.2929688 22.292969 C 3.9019687 22.683969 3.9019687 23.317031 4.2929688 23.707031 L 6.2929688 25.707031 C 6.6839688 26.098031 7.3170313 26.098031 7.7070312 25.707031 L 15 18.414062 L 22.292969 25.707031 C 22.682969 26.098031 23.317031 26.098031 23.707031 25.707031 L 25.707031 23.707031 C 26.098031 23.316031 26.098031 22.682969 25.707031 22.292969 L 18.414062 15 L 25.707031 7.7070312 C 26.098031 7.3170312 26.098031 6.6829688 25.707031 6.2929688 L 23.707031 4.2929688 C 23.316031 3.9019687 22.682969 3.9019687 22.292969 4.2929688 L 15 11.585938 L 7.7070312 4.2929688 C 7.5115312 4.0974687 7.255875 4 7 4 z"
               />
+            </svg>
+          </button>
+          <div class="modal__login">
+            <div class="modal__title flex">
+              <img class="modal__img" src="@/assets/logo3.png" alt="" />
+              <h1 class="modal__h1">Log in</h1>
+              <span class="modal__p">
+                Don't have an account?
+                <router-link class="modal__a font-semibold" to="/registr">
+                  Registration
+                </router-link>
+              </span>
             </div>
-            <div class="input-group">
-              <p class="input-txt font-semibold">Password</p>
+            <form @submit.prevent="Login" class="modal__form form-inline">
+              <div class="input-group">
+                <p class="modal__from__input-txt font-semibold">Email</p>
+                <input
+                  v-model="email"
+                  class="pt-2 modal__form__control"
+                  type="email"
+                  name="email"
+                />
+              </div>
+              <div class="input-group">
+                <p class="modal__from__input-txt font-semibold">Password</p>
+                <input
+                  v-model="password"
+                  style="font-size: 40px"
+                  class="pt-2 modal__form__control"
+                  type="password"
+                  min="0"
+                  max="15"
+                  name="name"
+                />
+              </div>
               <input
-                v-model="form.password"
-                style="font-size: 40px"
-                class="passwrd-input pt-2 form__control"
-                type="password"
-                min="0"
-                max="15"
-                name="name"
+                type="submit"
+                value="Login"
+                class="
+                  modal__btn
+                  p-0
+                  hover:bg-[#229a87]
+                  hover:border-[#229a87]
+                  hover:border-2
+                  hover:text-white
+                  hover:border-solid
+                  login-btn
+                "
               />
+            </form>
+            <div class="mt-4 w-[100%] items-center justify-between flex">
+              <div class="line"></div>
+              <p>or</p>
+              <div class="line"></div>
             </div>
-            <button type="submit" class="modal__btn login-btn">Log in</button>
-          </form>
-          <div class="or-block justify-between flex">
-            <div class="line"></div>
-            <p>or</p>
-            <div class="line"></div>
-          </div>
-          <div class="modal__btns">
-            <div class="modal__btn font-semibold flex justify-center facebook">
-              <svg
-                width="10"
-                height="19"
-                viewBox="0 0 10 19"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
+            <div class="modal__btns">
+              <div
+                class="modal__btn font-semibold flex justify-center facebook"
               >
-                <path
-                  d="M7.69223 3.64283H9.61529C9.82759 3.64283 9.9999 3.46753 9.9999 3.25153V0.615311C9.9999 0.410268 9.8449 0.239659 9.64413 0.225181C9.03222 0.180963 7.83684 0.121094 6.97724 0.121094C4.61534 0.121094 3.07689 1.56109 3.07689 4.17814V6.77327H0.384611C0.172306 6.77327 0 6.94857 0 7.16457V9.9037C0 10.1197 0.172306 10.295 0.384611 10.295H3.07689V17.7298C3.07689 17.9458 3.2492 18.1211 3.4615 18.1211H6.15378C6.36609 18.1211 6.5384 17.9458 6.5384 17.7298V10.295H9.31606C9.51221 10.295 9.67682 10.1451 9.69836 9.94675L9.99759 7.20762C10.023 6.97596 9.84452 6.77327 9.61529 6.77327H6.5384V4.81675C6.5384 4.16835 7.05493 3.64283 7.69223 3.64283Z"
-                  fill="white"
-                />
-              </svg>
-              Sign up with Facebook
-            </div>
-            <div class="modal__btn font-semibold flex justify-center google">
-              <svg
-                width="20"
-                height="21"
-                viewBox="0 0 20 21"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M10.4541 8.65374V11.8379H14.9916C14.3983 13.7671 12.7858 15.1479 10.4541 15.1479C7.67747 15.1479 5.42664 12.8971 5.42664 10.1212C5.42664 7.3454 7.67747 5.09457 10.4541 5.09457C11.7025 5.09457 12.8425 5.55207 13.7216 6.3054L16.0666 3.9604C14.5858 2.61124 12.6158 1.7879 10.4541 1.7879C5.85081 1.7879 2.11914 5.51874 2.11914 10.1212C2.11914 14.7237 5.85081 18.4546 10.4541 18.4546C17.4508 18.4546 18.995 11.9129 18.3091 8.66457L10.4541 8.65374Z"
-                  fill="#FCFCFC"
-                />
-              </svg>
-              Sign up with Google
+                <svg
+                  width="10"
+                  height="19"
+                  viewBox="0 0 10 19"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M7.69223 3.64283H9.61529C9.82759 3.64283 9.9999 3.46753 9.9999 3.25153V0.615311C9.9999 0.410268 9.8449 0.239659 9.64413 0.225181C9.03222 0.180963 7.83684 0.121094 6.97724 0.121094C4.61534 0.121094 3.07689 1.56109 3.07689 4.17814V6.77327H0.384611C0.172306 6.77327 0 6.94857 0 7.16457V9.9037C0 10.1197 0.172306 10.295 0.384611 10.295H3.07689V17.7298C3.07689 17.9458 3.2492 18.1211 3.4615 18.1211H6.15378C6.36609 18.1211 6.5384 17.9458 6.5384 17.7298V10.295H9.31606C9.51221 10.295 9.67682 10.1451 9.69836 9.94675L9.99759 7.20762C10.023 6.97596 9.84452 6.77327 9.61529 6.77327H6.5384V4.81675C6.5384 4.16835 7.05493 3.64283 7.69223 3.64283Z"
+                    fill="white"
+                  />
+                </svg>
+                Sign up with Facebook
+              </div>
+              <div class="modal__btn font-semibold flex justify-center google">
+                <svg
+                  width="20"
+                  height="21"
+                  viewBox="0 0 20 21"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M10.4541 8.65374V11.8379H14.9916C14.3983 13.7671 12.7858 15.1479 10.4541 15.1479C7.67747 15.1479 5.42664 12.8971 5.42664 10.1212C5.42664 7.3454 7.67747 5.09457 10.4541 5.09457C11.7025 5.09457 12.8425 5.55207 13.7216 6.3054L16.0666 3.9604C14.5858 2.61124 12.6158 1.7879 10.4541 1.7879C5.85081 1.7879 2.11914 5.51874 2.11914 10.1212C2.11914 14.7237 5.85081 18.4546 10.4541 18.4546C17.4508 18.4546 18.995 11.9129 18.3091 8.66457L10.4541 8.65374Z"
+                    fill="#FCFCFC"
+                  />
+                </svg>
+                Sign up with Google
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </transition>
   </div>
   <div class="header">
     <div class="container">
       <div class="header__content flex items-center justify-between">
-        <router-link to="/">
+        <a class="z-50" href="">
           <img src="@/assets/logo.svg" alt="logo" />
-        </router-link>
-        <div class="flex gap-3 dropdown-after" :class="{ dropdown: menuOpen }">
+        </a>
+        <div class="absolute w-[90%] h-screen" @click="menuOpen = false"></div>
+        <transition name="fade">
+          <div
+            class="flex gap-3 dropdown-after"
+            :class="{ dropdown: (menuOpen = true) }"
+            v-if="menuOpen"
+          >
+            <img
+              class="ml-4 top-7 absolute"
+              src="@/assets/search.svg"
+              alt=""
+            />
+            <input
+              class="search__input pt-2"
+              type="text"
+              placeholder="Find what interests you"
+            />
+            <select class="select font-semibold term font-semibold">
+              <option class="select font-semibold" value="" disabled>
+                Select a lesson
+              </option>
+              <option
+                class="select font-semibold"
+                v-for="lesson in lessons"
+                v-bind:key="lesson"
+              >
+                {{ lesson }}
+              </option>
+            </select>
+            <button
+              v-on:click="modalOpen = { true: false }"
+              class="log font-semibold pt-2.5"
+            >
+              Log In
+            </button>
+            <router-link to="/registr">
+              <button class="registr font-semibold">Registration</button>
+            </router-link>
+          </div>
+        </transition>
+        <div class="flex gap-3 dropdown-after z-50">
           <img
-            class="srch-icon top-7 absolute"
+            class="ml-4 top-7 absolute"
             src="@/assets/search.svg"
             alt=""
           />
           <input
-            class="search pt-2"
+            class="search__input pt-2"
             type="text"
             placeholder="Find what interests you"
           />
@@ -112,18 +185,18 @@
             </option>
           </select>
           <button
-            @click="modalOpen = { true: !true }"
+            v-on:click="modalOpen = { true: false }"
             class="log font-semibold pt-2.5"
           >
             Log In
           </button>
-          <router-link to="/registr">
-            <button class="registr font-semibold">Registration</button>
+          <router-link to="/registr" class="registr font-semibold">
+            Registration
           </router-link>
         </div>
         <svg
-          class="burger"
-          @click="menuOpen = !menuOpen"
+          class="burger z-50"
+          @click="menuOpen = { true: !true }"
           width="25"
           height="20"
           viewBox="0 0 14 16"
@@ -147,8 +220,8 @@
   </div>
 </template>
 <script>
-import { createUser } from "@/firebase";
-import { reactive } from "vue";
+import firebase from "firebase";
+import { ref } from "vue";
 import { useRouter } from "vue-router";
 export default {
   name: "header",
@@ -159,32 +232,33 @@ export default {
       modalOpen: false,
     };
   },
-  mounted() {
-    // addEventListener("click", OverflowHidden());
-    function OverflowHidden() {
-      document.body.style.overflow = "hidden";
-    }
-  },
   setup() {
     const router = useRouter();
-    const form = reactive({ email: "", password: "" });
+    const email = ref("");
+    const password = ref("");
 
-    const onSubmit = async () => {
-      await createUser({ ...form });
-      form.password = "";
-      form.email = "";
-      router.push("/dashboard");
+    const Login = () => {
+      firebase
+        .auth()
+        .signInWithEmailAndPassword(email.value, password.value)
+        .then((data) => {
+          alert(data);
+          router.push({ component: "Dashboard" });
+        })
+        .catch((err) => alert(err.message));
     };
 
-    return { form, onSubmit };
+    // const onSubmit = async () => {
+    //   await createUser({ ...form });
+    //   form.password = "";
+    //   form.email = "";
+    //   router.push("/dashboard");
+    // };
+
+    return { Login, email, password };
   },
 };
 </script>
-<style scoped>
-.body {
-  overflow: hidden;
-}
-</style>
 <style type="text/css">
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
@@ -206,10 +280,6 @@ html {
 * {
   margin: 0;
   padding: 0;
-}
-
-.srch-icon {
-  margin-left: 15px;
 }
 
 input {
@@ -240,17 +310,17 @@ input {
   border-color: #fff;
 }
 
-.search {
+.search_input {
   transition: 0.1s;
 }
 
-.search:focus {
+.search__input:focus {
   outline-style: solid;
   outline-color: #fff;
   outline-offset: 1px;
 }
 
-.search::placeholder {
+.search__input::placeholder {
   color: #e9efee;
 }
 
@@ -325,7 +395,7 @@ input {
   background: #fff;
 }
 
-.bg {
+.modal-bg {
   background: url("@/assets/bg3.png");
   z-index: -1;
   padding: 20px 0;
@@ -334,10 +404,9 @@ input {
 .close-btn {
   background: #def9f1;
   border: 1px solid #def9f1;
-  border-radius: 50%;
   right: 34px;
   top: 34px;
-  padding: 10px;
+  padding: 7px 7px;
 }
 
 .close {
@@ -379,7 +448,7 @@ input {
   letter-spacing: 0.0142658px;
 }
 
-.input-txt {
+.modal__from__input-txt {
   font-family: "Poppins";
   font-size: 14px;
   line-height: 21px;
@@ -388,11 +457,11 @@ input {
   margin-bottom: 6px;
 }
 
-.modal__contact {
+.modal__login {
   padding: 10px 120.5px;
 }
 
-.modal__contact .form-inline .form__control {
+.modal__login .form-inline .modal__form__control {
   width: 100%;
   height: 50px;
   font-size: 14px;
@@ -402,17 +471,17 @@ input {
   padding-left: 18px;
 }
 
-.form__control:focus {
+.modal__form__control:focus {
   outline-style: solid;
   outline-color: #ccc;
   outline-offset: 1px;
 }
 
-.form__control {
+.modal__form__control {
   color: #282929;
 }
 
-.form {
+.modal__form {
   margin-bottom: 16px;
 }
 
@@ -425,6 +494,7 @@ input {
   width: 100%;
   height: 50px;
   font-family: "Poppins";
+  transition: 0.4s;
   line-height: 21px;
   font-size: 14px;
   letter-spacing: -0.0142658px;
@@ -436,12 +506,6 @@ input {
   color: #282929;
   border: 1px solid #f9ed35;
   background: #f9ed35;
-}
-
-.or-block {
-  width: 100%;
-  align-items: center;
-  margin-bottom: 16px;
 }
 
 .line {
@@ -494,15 +558,29 @@ input {
     border-radius: 10px;
     height: 400px;
     background-color: #ccc;
-    transition: 0.5s;
-    display: flex;
     flex-direction: column;
-    position: absolute;
     margin-top: 330px;
+    display: flex;
+    position: fixed;
     z-index: 1;
     align-items: center;
     justify-content: center;
     overflow: hidden;
   }
+}
+.blur-content > {
+  backdrop-filter: blur(5px);
+}
+
+/* fade animation*/
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 200ms ease-out;
 }
 </style>

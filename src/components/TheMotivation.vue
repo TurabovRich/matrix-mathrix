@@ -77,4 +77,8 @@ export default {
   max-width: 335px;
   border-radius: 10px;
 }
+
+.motivation__card:hover > .motivation__img {
+  
+}
 </style>

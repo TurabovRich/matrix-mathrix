@@ -1,5 +1,5 @@
 <template>
-  <div class="screen-1 block">
+  <div class="screen-1 block z-no">
     <div class="label flex">
       <img src="@/assets/img1.svg" alt="image1" @click="openMenu" />
       <p class="font-semibold">Adapted to reforms</p>
@@ -43,7 +43,7 @@
             </router-link>
           </div>
         </div>
-        <img class="phone_img" src="@/assets/phone.png" alt="" />
+        <img class="phone_img w-3/6 z-50" src="@/assets/phone.png" alt="" />
       </div>
     </div>
   </div>
@@ -102,7 +102,6 @@ export default {
 
 .phone_img {
   margin-left: 50px;
-  width: 50%;
 }
 
 .fill01 {
